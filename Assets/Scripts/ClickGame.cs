@@ -1,12 +1,16 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class clickGame : MonoBehaviour
 {
-    public Button targetButton;
-    public RectTransform canvasRect;
-    public float minX = 0f, maxX = 800f;
-    public float minY = 0f, maxY = 600f;
+    [SerializeField] Button targetButton;
+    [SerializeField] RectTransform canvasRect;
+    [SerializeField] float minX = 0f, maxX = 800f;
+    [SerializeField] float minY = 0f, maxY = 600f;
+    [SerializeField] GameObject obj;
+
+
 
     void OnEnable()
     {
@@ -18,5 +22,13 @@ public class clickGame : MonoBehaviour
         // Set the button's anchored position
         RectTransform buttonRect = targetButton.GetComponent<RectTransform>();
         buttonRect.anchoredPosition = new Vector2(randomX, randomY);
+    }
+
+    public void ButtonPressed()
+    {
+        if (obj != null)
+        {
+            obj.SetActive(false);
+        }
     }
 }
