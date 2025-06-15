@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RandomButtonMover : MonoBehaviour
+public class clickGame : MonoBehaviour
 {
     public Button targetButton;
     public RectTransform canvasRect;
