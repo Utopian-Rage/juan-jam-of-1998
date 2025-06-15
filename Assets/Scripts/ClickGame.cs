@@ -1,16 +1,13 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class clickGame : MonoBehaviour
 {
     [SerializeField] Button targetButton;
-    [SerializeField] RectTransform canvasRect;
+    [SerializeField] RectTransform canvasRect; //used to get the canvas size
+    [SerializeField] Canvas uiCanvas;
     [SerializeField] float minX, maxX;
     [SerializeField] float minY, maxY;
-    [SerializeField] GameObject obj;
-
-
 
     void OnEnable()
     {
@@ -26,9 +23,13 @@ public class clickGame : MonoBehaviour
 
     public void ButtonPressed()
     {
-        if (obj != null)
+        if (targetButton != null)
         {
-            obj.SetActive(false);
+            targetButton.gameObject.SetActive(false);
+        }
+        if (uiCanvas != null)
+        {
+            uiCanvas.gameObject.SetActive(false);
         }
     }
 }
