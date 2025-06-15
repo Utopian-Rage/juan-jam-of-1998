@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class clickGame : MonoBehaviour
 {
     [SerializeField] Button targetButton;
-    [SerializeField] RectTransform canvasRect; //used to get the canvas size
+    [SerializeField] RectTransform canvasRect;
+    [SerializeField] GameObject miniGame;
     [SerializeField] Canvas uiCanvas;
     [SerializeField] float minX, maxX;
     [SerializeField] float minY, maxY;
@@ -16,7 +17,6 @@ public class clickGame : MonoBehaviour
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
 
-        // Set the button's anchored position
         RectTransform buttonRect = targetButton.GetComponent<RectTransform>();
         buttonRect.anchoredPosition = new Vector2(randomX, randomY);
     }
@@ -25,7 +25,7 @@ public class clickGame : MonoBehaviour
     {
         if (targetButton != null)
         {
-            targetButton.gameObject.SetActive(false);
+            miniGame.SetActive(false);
         }
         if (uiCanvas != null)
         {
