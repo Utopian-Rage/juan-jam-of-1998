@@ -6,8 +6,8 @@ public class clickGame : MonoBehaviour
 {
     [SerializeField] Button targetButton;
     [SerializeField] RectTransform canvasRect;
-    [SerializeField] float minX = 0f, maxX = 800f;
-    [SerializeField] float minY = 0f, maxY = 600f;
+    [SerializeField] float minX, maxX;
+    [SerializeField] float minY, maxY;
     [SerializeField] GameObject obj;
 
 
