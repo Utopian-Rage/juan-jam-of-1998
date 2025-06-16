@@ -6,8 +6,12 @@ public class clickGame : MonoBehaviour
     [SerializeField] Button targetButton;
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject miniGame;
-    [SerializeField] float minX, maxX;
-    [SerializeField] float minY, maxY;
+    
+    [Header("Horizontal")]
+    [SerializeField] float minX, maxX; //245
+
+    [Header("Vertical")]
+    [SerializeField] float minY, maxY; //210
 
     void OnEnable()
     {
@@ -20,9 +24,9 @@ public class clickGame : MonoBehaviour
         buttonRect.anchoredPosition = new Vector2(randomX, randomY);
     }
 
-    public void ButtonPressed()
+    public void miniGameEnd()
     {
-        if (targetButton != null)
+        if (miniGame != null)
         {
             miniGame.SetActive(false);
         }
