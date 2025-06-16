@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &156112907
+--- !u!43 &246769092
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1371,12 +1371,12 @@ GameObject:
   - component: {fileID: 1503170492}
   - component: {fileID: 1503170491}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Spectrogram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1503170490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1393,8 +1393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 150, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 630, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503170491
 MonoBehaviour:
@@ -2047,6 +2047,7 @@ GameObject:
   - component: {fileID: 2027263215}
   - component: {fileID: 2027263214}
   - component: {fileID: 2027263217}
+  - component: {fileID: 2027263218}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2233,7 +2234,7 @@ MonoBehaviour:
     rid: 1370221635162341588
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 156112907}
+    m_Mesh: {fileID: 246769092}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0.44999695, y: 0.94999695, z: 0}
@@ -2253,6 +2254,19 @@ MonoBehaviour:
     - rid: 1370221635162341588
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!114 &2027263218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027263211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a243744ab5e5af46b4ff61f3bc13ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskPullUp: {fileID: 1503170489}
 --- !u!1 &2112345949
 GameObject:
   m_ObjectHideFlags: 0
