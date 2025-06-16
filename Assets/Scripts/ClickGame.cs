@@ -6,7 +6,6 @@ public class clickGame : MonoBehaviour
     [SerializeField] Button targetButton;
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject miniGame;
-    [SerializeField] Canvas uiCanvas;
     [SerializeField] float minX, maxX;
     [SerializeField] float minY, maxY;
 
@@ -26,10 +25,6 @@ public class clickGame : MonoBehaviour
         if (targetButton != null)
         {
             miniGame.SetActive(false);
-        }
-        if (uiCanvas != null)
-        {
-            uiCanvas.gameObject.SetActive(false);
         }
     }
 }
