@@ -1,2 +1,2 @@
 https://dev-id-games.itch.io/pony-asset - Pony 5 sprite
-https://stackoverflow.com/questions/18628773/what-is-on-the-y-axis-of-a-spectrogram-produced-by-pylabs-specgram-function - Spectrogram example
+
