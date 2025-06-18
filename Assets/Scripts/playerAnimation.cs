@@ -11,13 +11,11 @@ public class playerAnimation : MonoBehaviour
     private float frameTimer;
     private int currentFrame;
     private Sprite[] currentAnimation;
-
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentAnimation = frontSprite;
     }
-
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -33,24 +31,18 @@ public class playerAnimation : MonoBehaviour
             currentAnimation = sideSprite;
             spriteRenderer.flipX = true;
         }
-        else if (vertical > 0)
-        {
-            currentAnimation = backSprite;
-            spriteRenderer.flipX = false;
-        }
         else if (vertical < 0)
         {
             currentAnimation = frontSprite;
             spriteRenderer.flipX = false;
         }
-
-        // Animate
-        if(horizontal == 0 && vertical == 0)
+        else if (vertical > 0)
         {
-            currentFrame = 0;
-            spriteRenderer.sprite = currentAnimation[currentFrame];
+            currentAnimation = backSprite;
+            spriteRenderer.flipX = false;
         }
-        else if (currentAnimation != null && currentAnimation.Length > 0)
+        // Animate
+        if (currentAnimation != null && currentAnimation.Length > 0)
         {
             frameTimer += Time.deltaTime;
             if (frameTimer >= 1f / animationFrameRate)
@@ -59,6 +51,11 @@ public class playerAnimation : MonoBehaviour
                 currentFrame = (currentFrame + 1) % currentAnimation.Length;
                 spriteRenderer.sprite = currentAnimation[currentFrame];
             }
+        }
+        if(horizontal == 0 && vertical == 0)
+        {
+            currentFrame = 0;
+            spriteRenderer.sprite = currentAnimation[currentFrame];
         }
     }
 }
