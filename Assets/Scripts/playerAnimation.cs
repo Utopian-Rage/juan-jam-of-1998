@@ -1,36 +1,64 @@
 using UnityEngine;
 public class playerAnimation : MonoBehaviour
 {
-    [SerializeField] Sprite backSprite0,backSprite1,backSprite2;
-    [SerializeField] Sprite frontSprite0,frontSprite1,frontSprite2;
-    [SerializeField] Sprite sideSprite0,sideSprite1,sideSprite2;
+    // Player animation sprites
+    [SerializeField] Sprite[] backSprite;
+    [SerializeField] Sprite[] frontSprite;
+    [SerializeField] Sprite[] sideSprite;
+    [SerializeField] float animationFrameRate;
+    // Components and other variables
     private SpriteRenderer spriteRenderer;
+    private float frameTimer;
+    private int currentFrame;
+    private Sprite[] currentAnimation;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        currentAnimation = frontSprite;
     }
 
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        spriteRenderer.sprite = frontSprite0;
-        spriteRenderer.flipX = false;
-        if (vertical > 0)
-        {
-            spriteRenderer.sprite = backSprite0;
-            spriteRenderer.flipX = false;
-        }
+        // Choose animation based on input
         if (horizontal < 0)
         {
-            spriteRenderer.sprite = sideSprite0;
+            currentAnimation = sideSprite;
             spriteRenderer.flipX = false;
         }
-        if (horizontal > 0)
+        else if (horizontal > 0)
         {
-            spriteRenderer.sprite = sideSprite0;
+            currentAnimation = sideSprite;
             spriteRenderer.flipX = true;
+        }
+        else if (vertical > 0)
+        {
+            currentAnimation = backSprite;
+            spriteRenderer.flipX = false;
+        }
+        else if (vertical < 0)
+        {
+            currentAnimation = frontSprite;
+            spriteRenderer.flipX = false;
+        }
+
+        // Animate
+        if(horizontal == 0 && vertical == 0)
+        {
+            currentFrame = 0;
+            spriteRenderer.sprite = currentAnimation[currentFrame];
+        }
+        else if (currentAnimation != null && currentAnimation.Length > 0)
+        {
+            frameTimer += Time.deltaTime;
+            if (frameTimer >= 1f / animationFrameRate)
+            {
+                frameTimer = 0f;
+                currentFrame = (currentFrame + 1) % currentAnimation.Length;
+                spriteRenderer.sprite = currentAnimation[currentFrame];
+            }
         }
     }
 }
