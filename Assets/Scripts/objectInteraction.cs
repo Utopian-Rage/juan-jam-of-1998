@@ -1,13 +1,9 @@
 using UnityEngine;
-
 public class objectInteraction : MonoBehaviour
 {
     [SerializeField] Canvas uiCanvas;
-    
     [SerializeField] GameObject miniGame;
-
     private bool isPlayerInTrigger = false;
-
     void Update()
     {
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
@@ -19,7 +15,6 @@ public class objectInteraction : MonoBehaviour
                 miniGame.SetActive(true);
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -28,7 +23,6 @@ public class objectInteraction : MonoBehaviour
             Debug.Log("Player entered trigger area. Press 'E' to interact.");
         }
     }
-
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
