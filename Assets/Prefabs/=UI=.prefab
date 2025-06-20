@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 0}
+  m_AnchoredPosition: {x: 143, y: 0}
   m_SizeDelta: {x: 500, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1259410027858061628
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 7080965709240867597}
   - component: {fileID: 7443071327692962878}
   m_Layer: 5
-  m_Name: Scrollbar (2)
+  m_Name: Progress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,7 +574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: 0}
+  m_AnchoredPosition: {x: -273, y: 0}
   m_SizeDelta: {x: 575, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6331733786209755352
@@ -1315,6 +1315,7 @@ GameObject:
   - component: {fileID: 6370920443022172803}
   - component: {fileID: 8049810795848160366}
   - component: {fileID: 7760625126612314336}
+  - component: {fileID: 3581684725107927611}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1408,6 +1409,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3581684725107927611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466622325800227662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd82366f84c52b44a022dcbae5a2b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2509625883806870112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: 0}
+  m_AnchoredPosition: {x: -36, y: 0}
   m_SizeDelta: {x: 575, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5505727918572829490
@@ -2190,6 +2203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3124492265531629719}
+  - component: {fileID: 1797520495398630570}
   m_Layer: 0
   m_Name: DistortionGame
   m_TagString: Untagged
@@ -2216,6 +2230,24 @@ Transform:
   - {fileID: 5695314628981591515}
   m_Father: {fileID: 7227200396529624497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1797520495398630570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637224126854616096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c04ec98121208f43910266bec96ef88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasRect: {fileID: 7227200396529624497}
+  miniGame: {fileID: 5637224126854616096}
+  scrollbars:
+  - {fileID: 3865721263772467203}
+  - {fileID: 4722313655983855144}
+  progressBar: {fileID: 7443071327692962878}
 --- !u!1 &5725431015099666538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,7 +2962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5051754346637263129
 Transform:
   m_ObjectHideFlags: 0
