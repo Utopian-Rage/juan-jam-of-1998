@@ -1,9 +1,7 @@
 using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
-    // Player movement speed
     [SerializeField] float moveSpeed = 5f;
-    // Components and other variables
     private float defaultMoveSpeed;
     private Rigidbody2D Rigidbody2D;
     private Vector2 movement;

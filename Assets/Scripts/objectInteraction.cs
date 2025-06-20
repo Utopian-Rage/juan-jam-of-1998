@@ -1,14 +1,11 @@
 using UnityEngine;
 public class objectInteraction : MonoBehaviour
 {
-    // Object interaction settings
     [SerializeField] Canvas uiCanvas;
     [SerializeField] GameObject miniGame;
-    // Components and other variables
     private bool isPlayerInTrigger = false;
     void Update()
     {
-        // Check if the player is in the trigger area and presses the interaction key
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
         {
             if (uiCanvas != null)
@@ -20,7 +17,6 @@ public class objectInteraction : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the player has entered the trigger area
         if (collision.CompareTag("Player"))
         {
             isPlayerInTrigger = true;

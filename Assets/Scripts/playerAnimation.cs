@@ -1,12 +1,10 @@
 using UnityEngine;
 public class playerAnimation : MonoBehaviour
 {
-    // Player animation sprites
     [SerializeField] Sprite[] backSprite;
     [SerializeField] Sprite[] frontSprite;
     [SerializeField] Sprite[] sideSprite;
     [SerializeField] float animationFrameRate;
-    // Components and other variables
     private SpriteRenderer spriteRenderer;
     private float frameTimer;
     private int currentFrame;
@@ -20,7 +18,6 @@ public class playerAnimation : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        // Choose animation based on input
         if (horizontal < 0)
         {
             currentAnimation = sideSprite;
@@ -41,7 +38,6 @@ public class playerAnimation : MonoBehaviour
             currentAnimation = backSprite;
             spriteRenderer.flipX = false;
         }
-        // Animate
         if (currentAnimation != null && currentAnimation.Length > 0)
         {
             frameTimer += Time.deltaTime;

@@ -1,12 +1,9 @@
 using UnityEngine;
 public class pylonAnimation : MonoBehaviour
 {
-    // Pylon animation sprites
     [SerializeField] Sprite[] pylonOnSprites;
     [SerializeField] Sprite[] pylonOffSprites;
-    // Animation settings
     [SerializeField] float animationFrameRate = 10f;
-    // Components and other variables
     private SpriteRenderer spriteRenderer;
     private float frameTimer;
     private int currentFrame;
@@ -17,7 +14,6 @@ public class pylonAnimation : MonoBehaviour
     }
     void Update()
     {
-        // Check if the pylon is on or off
         bool isPylonOn = GetComponent<pylonBehaviour>().getisPylonOn();
         currentAnimation = isPylonOn ? pylonOnSprites : pylonOffSprites;
         if (currentAnimation != null && currentAnimation.Length > 0)
