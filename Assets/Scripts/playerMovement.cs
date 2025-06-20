@@ -40,7 +40,6 @@ public class playerMovement : MonoBehaviour
         else
         {
             moveSpeedWalk = defaultmoveSpeedWalk;
-            Debug.Log("Speed Boost Deactivated: " + moveSpeedWalk);
         }
     }
     public void ShockPlayer()
