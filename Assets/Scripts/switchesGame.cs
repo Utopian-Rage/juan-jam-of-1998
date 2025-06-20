@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class switchesGame : MonoBehaviour
 {
     [SerializeField] Button[] targetButton;
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject miniGame;
+    [SerializeField] Sprite onButton;
+    [SerializeField] Sprite ofButton;
+    [SerializeField] Texture onLight;
+    [SerializeField] Texture ofLight;
     /*[Header("Horizontal")]
     [SerializeField] float minX, maxX;
     [Header("Vertical")]
@@ -56,11 +59,15 @@ public class switchesGame : MonoBehaviour
     }
     void UpdateButtonVisual(int idx)
     {
-        targetButton[idx].GetComponent<Image>().color = isOn[idx] ? Color.green : Color.red;
+        Image buttonImage = targetButton[idx].GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            buttonImage.sprite = isOn[idx] ? onButton : ofButton;
+        }
         RawImage childRawImage = targetButton[idx].GetComponentInChildren<RawImage>();
         if (childRawImage != null)
         {
-            childRawImage.color = isOn[idx] ? Color.white : Color.black;
+            childRawImage.texture = isOn[idx] ? onLight : ofLight;
         }
     }
     void CheckWinCondition()
@@ -69,21 +76,7 @@ public class switchesGame : MonoBehaviour
         {
             if (!isOn[i])
                 return;
-            canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
         }
+        canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
-    /*void OnEnable()
-    {
-        
-        if (targetButton == null || canvasRect == null) return;
-
-        for (int i = 0; i < targetButton.Length; i++)
-        {
-            float randomX = Random.Range(minX, maxX);
-            float randomY = Random.Range(minY, maxY);
-            RectTransform buttonRect = targetButton[i].GetComponent<RectTransform>();
-            buttonRect.anchoredPosition = new Vector2(randomX, randomY);
-        }
-        
-    }*/
 }
