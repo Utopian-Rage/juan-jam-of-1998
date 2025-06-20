@@ -70,14 +70,6 @@ public class switchesGame : MonoBehaviour
             if (!isOn[i])
                 return;
         }
-        miniGameEnd();
-    }
-    public void miniGameEnd()
-    {
-        if (miniGame != null)
-        {
-            miniGame.SetActive(false);
-        }
     }
     /*void OnEnable()
     {
