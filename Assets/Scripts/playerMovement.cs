@@ -1,8 +1,9 @@
 using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
-    private float defaultMoveSpeed;
+    [SerializeField] float moveSpeedWalk = 5f;
+    [SerializeField] float moveSpeedRun = 10f;
+    private float defaultmoveSpeedWalk;
     private Rigidbody2D Rigidbody2D;
     private Vector2 movement;
     private bool canMove = true;
@@ -10,7 +11,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        defaultMoveSpeed = moveSpeed;
+        defaultmoveSpeedWalk = moveSpeedWalk;
     }
     void Update()
     {
@@ -22,20 +23,25 @@ public class playerMovement : MonoBehaviour
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            if (Input.GetButtonDown("Fire3"))
-            {
-                moveSpeed *= 2;
-            }
-            else if (Input.GetButtonUp("Fire3"))
-            {
-                moveSpeed = defaultMoveSpeed;
-            }
+            playerSpeedCheck();
             movement = movement.normalized;
         }
     }
     void FixedUpdate()
     {
-        Rigidbody2D.MovePosition(Rigidbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Rigidbody2D.MovePosition(Rigidbody2D.position + movement * moveSpeedWalk * Time.fixedDeltaTime);
+    }
+    void playerSpeedCheck()
+    {
+        if (Input.GetButton("Fire3"))
+        {
+            moveSpeedWalk = moveSpeedRun;
+        }
+        else
+        {
+            moveSpeedWalk = defaultmoveSpeedWalk;
+            Debug.Log("Speed Boost Deactivated: " + moveSpeedWalk);
+        }
     }
     public void ShockPlayer()
     {
@@ -44,7 +50,7 @@ public class playerMovement : MonoBehaviour
         canBeShocked = false;
         GetComponent<playerAnimation>()?.PlayShocked();
         Invoke(nameof(EnableMovement), 2f);
-        Invoke(nameof(EnableShock), 2f); // 2s + 3s cooldown
+        Invoke(nameof(EnableShock), 2f);
     }
     private void EnableMovement()
     {

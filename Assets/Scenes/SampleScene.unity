@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &97065088
+--- !u!43 &251081057
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,6 +284,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &326439639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5637224126854616096, guid: 98a0e12c7570a3f49a95a85c7ea31d60, type: 3}
+  m_PrefabInstance: {fileID: 7233394703175454695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1047,7 @@ PrefabInstance:
     - target: {fileID: 1465999052217692504, guid: 18ead6c3aac5ff847adc3b675d01d3f3, type: 3}
       propertyPath: miniGame
       value: 
-      objectReference: {fileID: 945569195}
+      objectReference: {fileID: 326439639}
     - target: {fileID: 1465999052217692504, guid: 18ead6c3aac5ff847adc3b675d01d3f3, type: 3}
       propertyPath: uiCanvas
       value: 

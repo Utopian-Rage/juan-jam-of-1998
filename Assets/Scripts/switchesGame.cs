@@ -69,6 +69,7 @@ public class switchesGame : MonoBehaviour
         {
             if (!isOn[i])
                 return;
+            canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
         }
     }
     /*void OnEnable()
