@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 public class switchesGame : MonoBehaviour
 {
     [SerializeField] Button[] targetButton;
@@ -10,47 +11,66 @@ public class switchesGame : MonoBehaviour
     [Header("Vertical")]
     [SerializeField] float minY, maxY;*/
     private bool[] isOn;
-    private bool waitForAllOn = true;
     void OnEnable()
     {
         if (targetButton == null || targetButton.Length == 0 || canvasRect == null) return;
         isOn = new bool[targetButton.Length];
-        int onCount = 0, offCount = 0;
-
-        for (int i = 0; i < targetButton.Length; i++)
+        int total = targetButton.Length;
+        int minOff = Mathf.CeilToInt(total / 2f);
+        int offCount = 0;
+        for (int i = 0; i < total; i++)
         {
-            isOn[i] = Random.value > 0.5f;
-            if (isOn[i]) onCount++; else offCount++;
-            targetButton[i].GetComponent<Image>().color = isOn[i] ? Color.green : Color.red;
+            isOn[i] = false;
+        }
+        for (int i = 0; i < total; i++)
+        {
+            if (offCount < minOff)
+            {
+                offCount++;
+            }
+            else
+            {
+                isOn[i] = Random.value > 0.5f;
+            }
+        }
+        for (int i = 0; i < total; i++)
+        {
+            int swapIdx = Random.Range(0, total);
+            bool temp = isOn[i];
+            isOn[i] = isOn[swapIdx];
+            isOn[swapIdx] = temp;
+        }
+        for (int i = 0; i < total; i++)
+        {
+            UpdateButtonVisual(i);
             int idx = i;
             targetButton[i].onClick.RemoveAllListeners();
             targetButton[i].onClick.AddListener(() => ToggleButton(idx));
         }
-        waitForAllOn = offCount > onCount;
     }
     void ToggleButton(int idx)
     {
         isOn[idx] = !isOn[idx];
-        targetButton[idx].GetComponent<Image>().color = isOn[idx] ? Color.green : Color.red;
+        UpdateButtonVisual(idx);
         CheckWinCondition();
+    }
+    void UpdateButtonVisual(int idx)
+    {
+        targetButton[idx].GetComponent<Image>().color = isOn[idx] ? Color.green : Color.red;
+        RawImage childRawImage = targetButton[idx].GetComponentInChildren<RawImage>();
+        if (childRawImage != null)
+        {
+            childRawImage.color = isOn[idx] ? Color.white : Color.black;
+        }
     }
     void CheckWinCondition()
     {
-        bool allOn = true, allOff = true;
         for (int i = 0; i < isOn.Length; i++)
         {
-            if (!isOn[i]) allOn = false;
-            if (isOn[i]) allOff = false;
+            if (!isOn[i])
+                return;
         }
-
-        if (waitForAllOn && allOn)
-        {
-            miniGameEnd();
-        }
-        else if (!waitForAllOn && allOff)
-        {
-            miniGameEnd();
-        }
+        miniGameEnd();
     }
     public void miniGameEnd()
     {
