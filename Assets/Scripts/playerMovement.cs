@@ -17,19 +17,21 @@ public class playerMovement : MonoBehaviour
         if (!canMove)
         {
             movement = Vector2.zero;
-            return;
         }
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("Fire3"))
+        else if (canMove)
         {
-            moveSpeed *= 2;
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            if (Input.GetButtonDown("Fire3"))
+            {
+                moveSpeed *= 2;
+            }
+            else if (Input.GetButtonUp("Fire3"))
+            {
+                moveSpeed = defaultMoveSpeed;
+            }
+            movement = movement.normalized;
         }
-        else
-        {
-            moveSpeed = defaultMoveSpeed;
-        }
-        movement = movement.normalized;
     }
     void FixedUpdate()
     {
