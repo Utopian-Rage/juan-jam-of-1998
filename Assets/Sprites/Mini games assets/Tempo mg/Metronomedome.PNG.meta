@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Metronomedome_0: -3967065310584595765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

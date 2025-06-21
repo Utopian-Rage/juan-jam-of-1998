@@ -394,7 +394,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Flangersliderbar_0: -3611480482431346941
+      Flangersliderbar_1: -507130953525263059
+      Flangersliderbar_10: -1599580011584860962
+      Flangersliderbar_11: -6583288302966831560
+      Flangersliderbar_2: 3335059046596983987
+      Flangersliderbar_3: -6717248706114649797
+      Flangersliderbar_4: 6278426733544955090
+      Flangersliderbar_5: 952969769537321932
+      Flangersliderbar_6: -3719186178903593203
+      Flangersliderbar_7: 6395439542608462162
+      Flangersliderbar_8: 4396665786445775698
+      Flangersliderbar_9: 5410798738864750910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

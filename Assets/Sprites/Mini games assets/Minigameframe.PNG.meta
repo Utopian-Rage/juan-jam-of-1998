@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minigameframe_0: 6922333145902575826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rednob_0: 8068319557039933369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

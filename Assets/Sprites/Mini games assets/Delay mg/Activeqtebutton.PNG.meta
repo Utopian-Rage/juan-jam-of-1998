@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Activeqtebutton_0: 5553533375408625656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

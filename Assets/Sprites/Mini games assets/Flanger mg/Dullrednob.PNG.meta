@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dullrednob_0: 2515241419816521361
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

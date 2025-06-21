@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      timerslotqte_0: 4262073974787266542
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

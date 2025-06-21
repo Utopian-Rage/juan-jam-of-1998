@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Brightrednob_0: 8838344807311540744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
