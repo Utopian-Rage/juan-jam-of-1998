@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rednobamplify_0: -7509116741957513838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

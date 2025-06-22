@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: d51c5f4f26a02d14795da21c7d03b115
+guid: 8887b0af86f924044b4f7de56770789f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4200325210108867493
-    second: Yellowamplifysliderbar_0
-  - first:
-      213: -4053671513985292087
-    second: Yellowamplifysliderbar_1
-  - first:
-      213: -1657607730590664692
-    second: Yellowamplifysliderbar_2
+      213: -9070544067368387577
+    second: Start 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Yellowamplifysliderbar_0
+      name: Start 3_0
       rect:
         serializedVersion: 2
-        x: 465
-        y: 721
-        width: 990
-        height: 120
+        x: 0
+        y: 0
+        width: 415
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,50 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a338a9368d8a4a30800000000000000
-      internalID: 4200325210108867493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Yellowamplifysliderbar_1
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 477
-        width: 990
-        height: 119
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c869cc3c377eb7c0800000000000000
-      internalID: -4053671513985292087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Yellowamplifysliderbar_2
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 241
-        width: 990
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c08b3392d8efef8e0800000000000000
-      internalID: -1657607730590664692
+      spriteID: 70cfaf08a34fe1280800000000000000
+      internalID: -9070544067368387577
       vertices: []
       indices: 
       edges: []
@@ -178,10 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Yellowamplifysliderbar_0: 4200325210108867493
-      Yellowamplifysliderbar_1: -4053671513985292087
-      Yellowamplifysliderbar_2: -1657607730590664692
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

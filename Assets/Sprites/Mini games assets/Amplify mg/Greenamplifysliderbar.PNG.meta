@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Greenamplifysliderbar_0: 4360369790852259299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
