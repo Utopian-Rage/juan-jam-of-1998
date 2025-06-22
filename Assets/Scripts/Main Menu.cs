@@ -14,10 +14,12 @@ public class MainMenu : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    public void Update()
     {
-        Input.GetKeyDown(KeyCode.Escape);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             Application.Quit();
+        }
     }
     public void PlayGame()
     {
