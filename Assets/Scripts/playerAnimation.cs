@@ -75,6 +75,7 @@ public class playerAnimation : MonoBehaviour
             frameTimer += Time.deltaTime;
             if (frameTimer >= 1f / animationFrameRate)
             {
+                //Will put walk SFX here for walking animation - LS
                 frameTimer = 0f;
                 currentFrame = (currentFrame + 1) % currentAnimation.Length;
                 spriteRenderer.sprite = currentAnimation[currentFrame];
