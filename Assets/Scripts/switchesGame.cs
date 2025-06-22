@@ -82,6 +82,10 @@ public class switchesGame : MonoBehaviour
     }
     private System.Collections.IEnumerator DelayedMiniGameEnd()
     {
+        foreach (var btn in targetButton)
+        {
+            if (btn != null) btn.interactable = false;
+        }
         yield return new WaitForSeconds(1f);
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }

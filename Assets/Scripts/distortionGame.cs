@@ -6,6 +6,7 @@ public class distortionGame : MonoBehaviour
     [SerializeField] GameObject miniGame;
     [SerializeField] Scrollbar[] scrollbars;
     [SerializeField] Scrollbar progressBar;
+    [SerializeField] Scrollbar GoalBar;
     private float[] valueGoals;
     void OnEnable()
     {
@@ -21,6 +22,14 @@ public class distortionGame : MonoBehaviour
             int idx = i;
             scrollbars[i].onValueChanged.RemoveAllListeners();
             scrollbars[i].onValueChanged.AddListener((v) => CheckWinCondition());
+            if (GoalBar != null && scrollbars.Length == 1)
+            {
+                GoalBar.value = valueGoals[i];
+            }
+        }
+        if (GoalBar != null && scrollbars.Length > 0)
+        {
+            GoalBar.value = valueGoals[0];
         }
         UpdateProgressBar();
     }
@@ -29,13 +38,13 @@ public class distortionGame : MonoBehaviour
         bool allAtGoal = true;
         for (int i = 0; i < scrollbars.Length; i++)
         {
-            if (Mathf.Abs(scrollbars[i].value - valueGoals[i]) > 0.1f)
+            if (Mathf.Abs(scrollbars[i].value - valueGoals[i]) > 0.01f)
                 allAtGoal = false;
         }
         UpdateProgressBar();
         if (allAtGoal)
         {
-            canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
+            StartCoroutine(DelayedMiniGameEnd());
         }
     }
     void UpdateProgressBar()
@@ -48,5 +57,17 @@ public class distortionGame : MonoBehaviour
         }
         float normalized = 1f - Mathf.Clamp01(totalDistance / scrollbars.Length);
         progressBar.value = normalized;
+    }
+    private System.Collections.IEnumerator DelayedMiniGameEnd()
+    {
+        if (scrollbars != null)
+        {
+            foreach (var sb in scrollbars)
+            {
+                if (sb != null) sb.interactable = false;
+            }
+        }
+        yield return new WaitForSeconds(1f);
+        canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
 }

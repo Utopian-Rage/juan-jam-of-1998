@@ -39,6 +39,7 @@ public class tempoGame : MonoBehaviour
             SetHandleSprite(goalHandleSprite);
             if (stayTimer >= requiredStayTime)
             {
+                DisableAllInteractives();
                 canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
             }
         }
@@ -58,5 +59,9 @@ public class tempoGame : MonoBehaviour
                 handleImage.sprite = sprite;
             }
         }
+    }
+    private void DisableAllInteractives()
+    {
+        if (gameBar != null) gameBar.interactable = false;
     }
 }
