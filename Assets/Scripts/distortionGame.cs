@@ -7,6 +7,8 @@ public class distortionGame : MonoBehaviour
     [SerializeField] Scrollbar[] scrollbars;
     [SerializeField] Scrollbar progressBar;
     [SerializeField] Scrollbar GoalBar;
+    [SerializeField] Sprite NormalHandleSprite;
+    [SerializeField] Sprite WinHandleSprite;
     private float[] valueGoals;
     void OnEnable()
     {
@@ -26,6 +28,14 @@ public class distortionGame : MonoBehaviour
             {
                 GoalBar.value = valueGoals[i];
             }
+            if (scrollbars[i].handleRect != null)
+            {
+                Image handleImage = scrollbars[i].handleRect.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = NormalHandleSprite;
+                }
+            }
         }
         if (GoalBar != null && scrollbars.Length > 0)
         {
@@ -38,7 +48,16 @@ public class distortionGame : MonoBehaviour
         bool allAtGoal = true;
         for (int i = 0; i < scrollbars.Length; i++)
         {
-            if (Mathf.Abs(scrollbars[i].value - valueGoals[i]) > 0.05f)
+            bool atGoal = Mathf.Abs(scrollbars[i].value - valueGoals[i]) <= 0.05f;
+            if (scrollbars[i].handleRect != null)
+            {
+                Image handleImage = scrollbars[i].handleRect.GetComponent<Image>();
+                if (handleImage != null)
+                {
+                    handleImage.sprite = atGoal ? WinHandleSprite : NormalHandleSprite;
+                }
+            }
+            if (!atGoal)
                 allAtGoal = false;
         }
         UpdateProgressBar();
@@ -69,6 +88,14 @@ public class distortionGame : MonoBehaviour
             foreach (var sb in scrollbars)
             {
                 if (sb != null) sb.interactable = false;
+                    if (sb.handleRect != null)
+                    {
+                        Image handleImage = sb.handleRect.GetComponent<Image>();
+                        if (handleImage != null)
+                        {
+                            handleImage.sprite = WinHandleSprite;
+                        }
+                    }
             }
         }
         yield return new WaitForSeconds(1f);
