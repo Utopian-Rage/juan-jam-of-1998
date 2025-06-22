@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2278292839145482442}
   - component: {fileID: 3029457952589471839}
   - component: {fileID: 212128231466252524}
-  - component: {fileID: 7881957590293156085}
+  - component: {fileID: 2442309304571825186}
   m_Layer: 0
   m_Name: Interaction
   m_TagString: Untagged
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7881957590293156085
+--- !u!114 &2442309304571825186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,8 +230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6600958420800408416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c8cbca1cbb9e3e4ca98200ad1e75ce5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4438448faa08fbd4b9146b1d707650d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCanvas: {fileID: 0}
   miniGame: {fileID: 0}
