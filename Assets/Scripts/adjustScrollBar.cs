@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class tempoScrollBar : MonoBehaviour
+public class adjustScrollBar : MonoBehaviour
 {
     void Awake()
     {

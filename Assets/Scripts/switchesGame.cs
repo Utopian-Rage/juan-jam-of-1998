@@ -16,6 +16,7 @@ public class switchesGame : MonoBehaviour
     private bool[] isOn;
     void OnEnable()
     {
+        canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (targetButton == null || targetButton.Length == 0 || canvasRect == null) return;
         isOn = new bool[targetButton.Length];
         int total = targetButton.Length;
@@ -77,6 +78,11 @@ public class switchesGame : MonoBehaviour
             if (!isOn[i])
                 return;
         }
+        StartCoroutine(DelayedMiniGameEnd());
+    }
+    private System.Collections.IEnumerator DelayedMiniGameEnd()
+    {
+        yield return new WaitForSeconds(1f);
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
 }

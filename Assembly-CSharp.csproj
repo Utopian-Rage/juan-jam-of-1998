@@ -65,6 +65,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2023.2.20f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\adjustScrollBar.cs" />
     <Compile Include="Assets\Scripts\playerAnimation.cs" />
     <Compile Include="Assets\Scripts\objectInteraction.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Assets\Scripts\switchesGame.cs" />
     <Compile Include="Assets\Scripts\pylonAnimation.cs" />
     <Compile Include="Assets\Scripts\distortionGame.cs" />
-    <Compile Include="Assets\Scripts\tempoScrollBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

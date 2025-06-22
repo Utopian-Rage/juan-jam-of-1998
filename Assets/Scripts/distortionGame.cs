@@ -9,6 +9,7 @@ public class distortionGame : MonoBehaviour
     private float[] valueGoals;
     void OnEnable()
     {
+        canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (scrollbars == null || scrollbars.Length == 0) return;
 
         valueGoals = new float[scrollbars.Length];

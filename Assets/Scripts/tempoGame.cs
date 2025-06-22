@@ -14,6 +14,7 @@ public class tempoGame : MonoBehaviour
     private float minDistance = 0.1f;
     void OnEnable()
     {
+        canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (gameBar == null || goalBar == null) return;
         valueGoal = Random.Range(0.1f, 0.9f);
         goalBar.value = valueGoal;

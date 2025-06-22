@@ -9,10 +9,6 @@ public class pylonBehaviour : MonoBehaviour
     void Start()
     {
         pylonCollider = GetComponent<Collider2D>();
-        if (pylonCollider == null)  
-        {
-            Debug.LogError("Pylon collider is not set.");
-        }
     }
     void Update()
     {
@@ -33,7 +29,6 @@ public class pylonBehaviour : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Player shocked!");
         if (isPylonOn && collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<playerMovement>()?.ShockPlayer();

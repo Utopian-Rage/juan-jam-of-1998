@@ -13,6 +13,7 @@ public class playerAnimation : MonoBehaviour
     private Sprite[] currentAnimation;
     private bool isShocked = false;
     private bool isEndShocked = false;
+    private bool isPaused = false;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,6 +21,22 @@ public class playerAnimation : MonoBehaviour
     }
     void Update()
     {
+        if (isPaused)
+        {
+            if (isShocked && shockedSprite != null && shockedSprite.Length > 0)
+            {
+                spriteRenderer.sprite = shockedSprite[0];
+            }
+            else if (isEndShocked && endShockedSprite != null && endShockedSprite.Length > 0)
+            {
+                spriteRenderer.sprite = endShockedSprite[0];
+            }
+            else if (currentAnimation != null && currentAnimation.Length > 0)
+            {
+                spriteRenderer.sprite = currentAnimation[0];
+            }
+            return;
+        }
         if (isShocked)
         {
             if (shockedSprite != null && shockedSprite.Length > 0)
@@ -99,10 +116,18 @@ public class playerAnimation : MonoBehaviour
         currentFrame = 0;
         frameTimer = 0f;
     }
-        private void EndEndShocked()
+    private void EndEndShocked()
     {
         isEndShocked = false;
         currentFrame = 0;
         frameTimer = 0f;
+    }
+    public void PauseAnimations()
+    {
+        isPaused = true;
+    }
+    public void ResumeAnimations()
+    {
+        isPaused = false;
     }
 }

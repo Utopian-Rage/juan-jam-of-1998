@@ -51,6 +51,18 @@ public class playerMovement : MonoBehaviour
         Invoke(nameof(EnableMovement), 2f);
         Invoke(nameof(EnableShock), 2f);
     }
+    public void MiniGameStart()
+    {
+        canMove = false;
+        canBeShocked = false;
+        GetComponent<playerAnimation>()?.PauseAnimations();
+    }
+    public void MiniGameEnd()
+    {
+        canMove = true;
+        canBeShocked = true;
+        GetComponent<playerAnimation>()?.ResumeAnimations();
+    }
     private void EnableMovement()
     {
         canMove = true;

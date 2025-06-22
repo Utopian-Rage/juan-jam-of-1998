@@ -20,7 +20,6 @@ public class objectInteraction : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInTrigger = true;
-            Debug.Log("Player entered trigger area. Press 'E' to interact.");
         }
     }
     void OnTriggerExit2D(Collider2D collision)
