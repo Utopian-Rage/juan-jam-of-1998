@@ -38,12 +38,16 @@ public class distortionGame : MonoBehaviour
         bool allAtGoal = true;
         for (int i = 0; i < scrollbars.Length; i++)
         {
-            if (Mathf.Abs(scrollbars[i].value - valueGoals[i]) > 0.01f)
+            if (Mathf.Abs(scrollbars[i].value - valueGoals[i]) > 0.05f)
                 allAtGoal = false;
         }
         UpdateProgressBar();
         if (allAtGoal)
         {
+            for (int i = 0; i < scrollbars.Length; i++)
+            {
+                scrollbars[i].value = valueGoals[i];
+            }
             StartCoroutine(DelayedMiniGameEnd());
         }
     }
