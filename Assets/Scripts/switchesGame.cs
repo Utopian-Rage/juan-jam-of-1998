@@ -9,10 +9,6 @@ public class switchesGame : MonoBehaviour
     [SerializeField] Sprite ofButton;
     [SerializeField] Texture onLight;
     [SerializeField] Texture ofLight;
-    /*[Header("Horizontal")]
-    [SerializeField] float minX, maxX;
-    [Header("Vertical")]
-    [SerializeField] float minY, maxY;*/
     private bool[] isOn;
     void OnEnable()
     {

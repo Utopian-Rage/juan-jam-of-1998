@@ -10,8 +10,8 @@ public class tempoGame : MonoBehaviour
     [SerializeField] Sprite goalHandleSprite;
     [SerializeField] float stayTimer = 0f;
     private float valueGoal;
-    private float requiredStayTime = 1f;
-    private float minDistance = 0.1f;
+    private readonly float requiredStayTime = 1f;
+    private readonly float minDistance = 0.1f;
     void OnEnable()
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();

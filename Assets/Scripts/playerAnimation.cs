@@ -116,12 +116,6 @@ public class playerAnimation : MonoBehaviour
         currentFrame = 0;
         frameTimer = 0f;
     }
-    private void EndEndShocked()
-    {
-        isEndShocked = false;
-        currentFrame = 0;
-        frameTimer = 0f;
-    }
     public void PauseAnimations()
     {
         isPaused = true;

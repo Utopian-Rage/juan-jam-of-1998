@@ -5,11 +5,6 @@ public class pylonBehaviour : MonoBehaviour
     [SerializeField] GameObject LightObject;
     private bool isPylonOn = false;
     private float timer = 0f;
-    Collider2D pylonCollider;
-    void Start()
-    {
-        pylonCollider = GetComponent<Collider2D>();
-    }
     void Update()
     {
         timer += Time.deltaTime;

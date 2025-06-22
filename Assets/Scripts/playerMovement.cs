@@ -3,6 +3,7 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeedWalk = 5f;
     [SerializeField] float moveSpeedRun = 10f;
+    playerAnimation playerAnimation;
     private float defaultmoveSpeedWalk;
     private Rigidbody2D Rigidbody2D;
     private Vector2 movement;
@@ -12,6 +13,11 @@ public class playerMovement : MonoBehaviour
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         defaultmoveSpeedWalk = moveSpeedWalk;
+        playerAnimation = GetComponent<playerAnimation>();
+        if (playerAnimation == null)
+        {
+            Debug.LogWarning("playerAnimation component not found!");
+        }
     }
     void Update()
     {
@@ -47,7 +53,7 @@ public class playerMovement : MonoBehaviour
         if (!canBeShocked) return;
         canMove = false;
         canBeShocked = false;
-        GetComponent<playerAnimation>()?.PlayShocked();
+        playerAnimation.PlayShocked();
         Invoke(nameof(EnableMovement), 2f);
         Invoke(nameof(EnableShock), 2f);
     }
@@ -55,18 +61,18 @@ public class playerMovement : MonoBehaviour
     {
         canMove = false;
         canBeShocked = false;
-        GetComponent<playerAnimation>()?.PauseAnimations();
+        playerAnimation.PauseAnimations();
     }
     public void MiniGameEnd()
     {
         canMove = true;
         canBeShocked = true;
-        GetComponent<playerAnimation>()?.ResumeAnimations();
+        playerAnimation.ResumeAnimations();
     }
     private void EnableMovement()
     {
         canMove = true;
-        GetComponent<playerAnimation>()?.StopShocked();
+        playerAnimation.StopShocked();
     }
     private void EnableShock()
     {
