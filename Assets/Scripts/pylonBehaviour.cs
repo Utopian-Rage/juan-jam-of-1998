@@ -22,7 +22,7 @@ public class pylonBehaviour : MonoBehaviour
     {
         return isPylonOn;
     }
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (isPylonOn && collision.gameObject.CompareTag("Player"))
         {

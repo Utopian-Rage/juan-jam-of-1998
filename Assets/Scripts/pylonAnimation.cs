@@ -14,7 +14,7 @@ public class pylonAnimation : MonoBehaviour
     }
     void Update()
     {
-        bool isPylonOn = GetComponent<pylonBehaviour>().getisPylonOn();
+        bool isPylonOn = gameObject.GetComponentInChildren<pylonBehaviour>().getisPylonOn();
         currentAnimation = isPylonOn ? pylonOnSprites : pylonOffSprites;
         if (currentAnimation != null && currentAnimation.Length > 0)
         {
