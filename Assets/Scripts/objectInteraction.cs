@@ -1,12 +1,13 @@
 using UnityEngine;
 public class objectInteraction : MonoBehaviour
 {
-    [SerializeField] Canvas uiCanvas;
     [SerializeField] GameObject miniGame;
+    [SerializeField] float timerDuration = 2f;
     private bool isPlayerInTrigger = false;
+    bool isTimerDone = true;
     void Update()
     {
-        if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
+        if (isTimerDone && isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
@@ -17,17 +18,23 @@ public class objectInteraction : MonoBehaviour
                     interactableChild.gameObject.SetActive(false);
                 }
             }
-            if (uiCanvas != null)
-                uiCanvas.gameObject.SetActive(true);
-
             if (miniGame != null)
                 miniGame.SetActive(true);
             isPlayerInTrigger = false;
+            isTimerDone = false;
+            StartCoroutine(StartInteractionTimer());
         }
+    }
+    private System.Collections.IEnumerator StartInteractionTimer()
+    {
+        Debug.Log("Interaction started, waiting for " + timerDuration + " seconds.");
+        yield return new WaitForSeconds(timerDuration);
+        isTimerDone = true;
+        Debug.Log("Interaction timer done.");
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && isTimerDone)
         {
             isPlayerInTrigger = true;
             Transform interactableChild = collision.transform.Find("Interactable");

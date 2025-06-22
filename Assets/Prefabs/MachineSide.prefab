@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -0.55, y: 0, z: 0}
   m_LocalScale: {x: 6.4875026, y: 1.8875005, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5620277526105352771}
   m_Father: {fileID: 1857537215235618936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1456280291030027944
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCanvas: {fileID: 0}
   miniGame: {fileID: 0}
+  timerDuration: 5
 --- !u!1 &6548721680891492319
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,12 +175,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6548721680891492319}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.020000458, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.30198696, z: 0}
+  m_LocalScale: {x: 0.1541425, y: 0.5298012, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1857537215235618936}
+  m_Father: {fileID: 4102429786770832278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4428463844545497433
 MonoBehaviour:
@@ -292,7 +294,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4102429786770832278}
-  - {fileID: 5620277526105352771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6957676052081770953
