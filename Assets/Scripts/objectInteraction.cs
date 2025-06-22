@@ -22,6 +22,7 @@ public class objectInteraction : MonoBehaviour
 
             if (miniGame != null)
                 miniGame.SetActive(true);
+            isPlayerInTrigger = false;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +37,6 @@ public class objectInteraction : MonoBehaviour
             }
         }
     }
-
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

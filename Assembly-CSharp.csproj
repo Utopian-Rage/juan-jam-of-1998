@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\adjustScrollBar.cs" />
     <Compile Include="Assets\Scripts\playerAnimation.cs" />
     <Compile Include="Assets\Scripts\objectInteraction.cs" />
+    <Compile Include="Assets\Scripts\monitorBehaviour.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
     <Compile Include="Assets\Scripts\tempoGame.cs" />
     <Compile Include="Assets\Scripts\levelTimer.cs" />

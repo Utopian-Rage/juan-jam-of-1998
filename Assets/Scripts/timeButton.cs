@@ -35,6 +35,7 @@ public class timeButton : MonoBehaviour
             {
                 Debug.LogWarning("LevelTimer was not found.");
             }
+            isPlayerInTrigger = false;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
