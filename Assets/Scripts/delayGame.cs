@@ -8,7 +8,7 @@ public class delayGame : MonoBehaviour
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject miniGame;
     [SerializeField] Sprite onButton;
-    [SerializeField] Sprite ofButton;
+    [SerializeField] Sprite offButton;
     [SerializeField] TextMeshProUGUI timerText;
     private bool[] isOn;
     private Coroutine gameTimerCoroutine;
@@ -52,25 +52,11 @@ public class delayGame : MonoBehaviour
             int idx = i;
             targetButton[i].onClick.RemoveAllListeners();
             targetButton[i].onClick.AddListener(() => ToggleButton(idx));
-            targetButton[i].interactable = true;
+            targetButton[i].interactable = !isOn[i];
         }
         if (gameTimerCoroutine != null)
             StopCoroutine(gameTimerCoroutine);
         gameTimerCoroutine = StartCoroutine(GameTimer());
-    }
-    private System.Collections.IEnumerator GameTimer()
-    {
-        float timer = gameTime;
-        while (timer > 0f)
-        {
-            if (timerText != null)
-                timerText.text = Mathf.CeilToInt(timer).ToString();
-            yield return null;
-            timer -= Time.deltaTime;
-        }
-        if (timerText != null)
-            timerText.text = "0";
-        ResetGame();
     }
     void ToggleButton(int idx)
     {
@@ -83,8 +69,9 @@ public class delayGame : MonoBehaviour
         Image buttonImage = targetButton[idx].GetComponent<Image>();
         if (buttonImage != null)
         {
-            buttonImage.sprite = isOn[idx] ? onButton : ofButton;
+            buttonImage.sprite = isOn[idx] ? onButton : offButton;
         }
+        targetButton[idx].interactable = !isOn[idx];
     }
     void CheckWinCondition()
     {
@@ -93,12 +80,16 @@ public class delayGame : MonoBehaviour
             if (!isOn[i])
                 return;
         }
-        StopAllCoroutines();
         foreach (var btn in targetButton)
         {
             if (btn != null) btn.interactable = false;
         }
+        StopAllCoroutines();
         StartCoroutine(DelayedMiniGameEnd());
+    }
+    void ResetGame()
+    {
+        Gameinitialisation();
     }
     private System.Collections.IEnumerator DelayedMiniGameEnd()
     {
@@ -109,8 +100,22 @@ public class delayGame : MonoBehaviour
         yield return new WaitForSeconds(1f);
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
-    void ResetGame()
+        private System.Collections.IEnumerator GameTimer()
     {
-        Gameinitialisation();
+        float timer = gameTime;
+        while (timer > 0f)
+        {
+            if (timerText != null)
+            {
+                int minutes = Mathf.FloorToInt(timer / 60f);
+                int seconds = Mathf.FloorToInt(timer % 60f);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+            yield return null;
+            timer -= Time.deltaTime;
+        }
+        if (timerText != null)
+            timerText.text = "00:00";
+        ResetGame();
     }
 }
