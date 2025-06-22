@@ -99,6 +99,18 @@ public class distortionGame : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1f);
+            foreach (var sb in scrollbars)
+            {
+                if (sb != null) sb.interactable = true;
+                    if (sb.handleRect != null)
+                    {
+                        Image handleImage = sb.handleRect.GetComponent<Image>();
+                        if (handleImage != null)
+                        {
+                            handleImage.sprite = NormalHandleSprite;
+                        }
+                    }
+            }
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
 }

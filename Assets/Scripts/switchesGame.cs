@@ -83,6 +83,10 @@ public class switchesGame : MonoBehaviour
             if (btn != null) btn.interactable = false;
         }
         yield return new WaitForSeconds(1f);
+        foreach (var btn in targetButton)
+        {
+            if (btn != null) btn.interactable = true;
+        }
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }
 }

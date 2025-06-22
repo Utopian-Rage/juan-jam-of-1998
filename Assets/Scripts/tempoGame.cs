@@ -39,8 +39,9 @@ public class tempoGame : MonoBehaviour
             SetHandleSprite(goalHandleSprite);
             if (stayTimer >= requiredStayTime)
             {
-                DisableAllInteractives();
+                gameBar.interactable = false;
                 canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
+                gameBar.interactable = true;
             }
         }
         else
@@ -59,9 +60,5 @@ public class tempoGame : MonoBehaviour
                 handleImage.sprite = sprite;
             }
         }
-    }
-    private void DisableAllInteractives()
-    {
-        if (gameBar != null) gameBar.interactable = false;
     }
 }
