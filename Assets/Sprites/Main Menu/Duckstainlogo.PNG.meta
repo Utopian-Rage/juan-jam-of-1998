@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Duckstainlogo_0: 4713996990606137861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,6 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class levelTimer : MonoBehaviour
 {
     [Tooltip("Timer is in seconds")]
@@ -28,6 +29,7 @@ public class levelTimer : MonoBehaviour
                 timeRemaining = 0;
                 isTimerRunning = false;
                 Debug.Log("Timer has ended!");
+                SceneManager.LoadScene("Level 2");
             }
             UpdateTimerText();
         }
@@ -36,7 +38,7 @@ public class levelTimer : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:01}:{1:00}", minutes, seconds);
     }
     public void AddTime(float additionalTime)
     {

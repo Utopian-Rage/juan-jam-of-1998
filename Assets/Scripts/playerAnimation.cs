@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 public class playerAnimation : MonoBehaviour
 {
     [SerializeField] Sprite[] backSprite;
@@ -14,6 +15,9 @@ public class playerAnimation : MonoBehaviour
     private bool isShocked = false;
     private bool isEndShocked = false;
     private bool isPaused = false;
+ 
+
+  
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -92,7 +96,7 @@ public class playerAnimation : MonoBehaviour
             frameTimer += Time.deltaTime;
             if (frameTimer >= 1f / animationFrameRate)
             {
-                //Will put walk SFX here for walking animation - LS
+
                 frameTimer = 0f;
                 currentFrame = (currentFrame + 1) % currentAnimation.Length;
                 spriteRenderer.sprite = currentAnimation[currentFrame];
@@ -104,6 +108,8 @@ public class playerAnimation : MonoBehaviour
             spriteRenderer.sprite = currentAnimation[currentFrame];
         }
     }
+
+    
     public void PlayShocked()
     {
         isShocked = true;

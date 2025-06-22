@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         AudioSource.Stop();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void QuitGame()

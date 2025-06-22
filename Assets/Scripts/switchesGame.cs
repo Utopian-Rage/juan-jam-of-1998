@@ -10,6 +10,8 @@ public class switchesGame : MonoBehaviour
     [SerializeField] Texture onLight;
     [SerializeField] Texture ofLight;
     private bool[] isOn;
+    public AudioSource Source;
+    public AudioClip Clip;
     void OnEnable()
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
@@ -50,6 +52,7 @@ public class switchesGame : MonoBehaviour
     }
     void ToggleButton(int idx)
     {
+        Source.PlayOneShot(Clip);
         isOn[idx] = !isOn[idx];
         UpdateButtonVisual(idx);
         CheckWinCondition();

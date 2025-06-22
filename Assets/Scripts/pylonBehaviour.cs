@@ -5,6 +5,8 @@ public class pylonBehaviour : MonoBehaviour
     [SerializeField] GameObject LightObject;
     private bool isPylonOn = false;
     private float timer = 0f;
+    public AudioSource Source;
+    public AudioClip Clip;
     void Update()
     {
         timer += Time.deltaTime;
@@ -26,6 +28,7 @@ public class pylonBehaviour : MonoBehaviour
     {
         if (isPylonOn && collision.gameObject.CompareTag("Player"))
         {
+            Source.PlayOneShot(Clip);
             collision.gameObject.GetComponent<playerMovement>()?.ShockPlayer();
         }
     }

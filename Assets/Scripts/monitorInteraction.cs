@@ -3,10 +3,13 @@ public class monitorInteraction : MonoBehaviour
 {
     [SerializeField] GameObject miniGame;
     private bool isPlayerInTrigger = false;
+    public AudioSource Source;
+    public AudioClip Clip;
     void Update()
     {
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
         {
+            
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {

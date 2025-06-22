@@ -10,6 +10,8 @@ public class distortionGame : MonoBehaviour
     [SerializeField] Sprite NormalHandleSprite;
     [SerializeField] Sprite WinHandleSprite;
     private float[] valueGoals;
+    public AudioSource Source;
+    public AudioClip Clip;
     void OnEnable()
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
@@ -41,6 +43,7 @@ public class distortionGame : MonoBehaviour
         {
             GoalBar.value = valueGoals[0];
         }
+
         UpdateProgressBar();
     }
     void CheckWinCondition()
@@ -54,6 +57,7 @@ public class distortionGame : MonoBehaviour
                 Image handleImage = scrollbars[i].handleRect.GetComponent<Image>();
                 if (handleImage != null)
                 {
+                    Source.PlayOneShot(Clip);
                     handleImage.sprite = atGoal ? WinHandleSprite : NormalHandleSprite;
                 }
             }

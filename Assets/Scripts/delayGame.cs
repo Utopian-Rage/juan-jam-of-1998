@@ -12,6 +12,8 @@ public class delayGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     private bool[] isOn;
     private Coroutine gameTimerCoroutine;
+    public AudioSource Source;
+    public AudioClip Clip;
     void OnEnable()
     {
         Gameinitialisation();
@@ -60,6 +62,7 @@ public class delayGame : MonoBehaviour
     }
     void ToggleButton(int idx)
     {
+        Source.PlayOneShot(Clip);
         isOn[idx] = !isOn[idx];
         UpdateButtonVisual(idx);
         CheckWinCondition();

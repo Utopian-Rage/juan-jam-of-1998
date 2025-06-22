@@ -12,6 +12,8 @@ public class tempoGame : MonoBehaviour
     private float valueGoal;
     private readonly float requiredStayTime = 1f;
     private readonly float minDistance = 0.1f;
+    public AudioSource Source;
+    public AudioClip Clip;
     void OnEnable()
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
@@ -35,6 +37,7 @@ public class tempoGame : MonoBehaviour
         bool atGoal = Mathf.Abs(gameBar.value - valueGoal) < 0.01f;
         if (atGoal)
         {
+            Source.PlayOneShot(Clip);
             stayTimer += Time.deltaTime;
             SetHandleSprite(goalHandleSprite);
             if (stayTimer >= requiredStayTime)

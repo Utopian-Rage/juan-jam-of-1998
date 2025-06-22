@@ -4,6 +4,9 @@ public class timeButton : MonoBehaviour
     private bool isPlayerInTrigger = false;
     [SerializeField] float timeToAdd = 10f;
     levelTimer timer;
+    public AudioSource Source;
+    public AudioClip Clip;
+    public AudioClip Clip2;
     void Start()
     {
         GameObject levelTimerObject = GameObject.Find("LevelTimer");
@@ -18,6 +21,8 @@ public class timeButton : MonoBehaviour
     {
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
         {
+            Source.PlayOneShot(Clip);
+            Source.PlayOneShot(Clip2);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
