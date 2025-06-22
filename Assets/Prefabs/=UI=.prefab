@@ -6346,6 +6346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4aa7ff9840d8864eb699b8522000fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTime: 7
   targetButton:
   - {fileID: 5674191026043860176}
   - {fileID: 8926361730069502390}
@@ -6373,6 +6374,7 @@ MonoBehaviour:
   miniGame: {fileID: 8021315705393368895}
   onButton: {fileID: 5553533375408625656, guid: 95fb0d18f3210ee4bbc7fe5cd588cc7a, type: 3}
   ofButton: {fileID: 512180022491992688, guid: bfd80cae69f26f34eb77a80b3288333e, type: 3}
+  timerText: {fileID: 8616052277076175387}
 --- !u!1 &8144805357776390290
 GameObject:
   m_ObjectHideFlags: 0

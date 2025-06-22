@@ -1,14 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class delayGame : MonoBehaviour
 {
+    [SerializeField] float gameTime = 5f;
     [SerializeField] Button[] targetButton;
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject miniGame;
     [SerializeField] Sprite onButton;
     [SerializeField] Sprite ofButton;
+    [SerializeField] TextMeshProUGUI timerText;
     private bool[] isOn;
+    private Coroutine gameTimerCoroutine;
     void OnEnable()
+    {
+        Gameinitialisation();
+    }
+    void Gameinitialisation()
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (targetButton == null || targetButton.Length == 0 || canvasRect == null) return;
@@ -44,7 +52,25 @@ public class delayGame : MonoBehaviour
             int idx = i;
             targetButton[i].onClick.RemoveAllListeners();
             targetButton[i].onClick.AddListener(() => ToggleButton(idx));
+            targetButton[i].interactable = true;
         }
+        if (gameTimerCoroutine != null)
+            StopCoroutine(gameTimerCoroutine);
+        gameTimerCoroutine = StartCoroutine(GameTimer());
+    }
+    private System.Collections.IEnumerator GameTimer()
+    {
+        float timer = gameTime;
+        while (timer > 0f)
+        {
+            if (timerText != null)
+                timerText.text = Mathf.CeilToInt(timer).ToString();
+            yield return null;
+            timer -= Time.deltaTime;
+        }
+        if (timerText != null)
+            timerText.text = "0";
+        ResetGame();
     }
     void ToggleButton(int idx)
     {
@@ -67,6 +93,11 @@ public class delayGame : MonoBehaviour
             if (!isOn[i])
                 return;
         }
+        StopAllCoroutines();
+        foreach (var btn in targetButton)
+        {
+            if (btn != null) btn.interactable = false;
+        }
         StartCoroutine(DelayedMiniGameEnd());
     }
     private System.Collections.IEnumerator DelayedMiniGameEnd()
@@ -77,5 +108,9 @@ public class delayGame : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
+    }
+    void ResetGame()
+    {
+        Gameinitialisation();
     }
 }
