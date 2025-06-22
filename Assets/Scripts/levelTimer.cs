@@ -38,7 +38,7 @@ public class levelTimer : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
-        timerText.text = string.Format("{0:01}:{1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     public void AddTime(float additionalTime)
     {
