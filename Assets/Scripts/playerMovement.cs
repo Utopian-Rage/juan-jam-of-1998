@@ -48,6 +48,10 @@ public class playerMovement : MonoBehaviour
             moveSpeedWalk = defaultmoveSpeedWalk;
         }
     }
+    private void EnableShock()
+    {
+        canBeShocked = true;
+    }
     public void ShockPlayer()
     {
         if (!canBeShocked) return;
@@ -73,9 +77,5 @@ public class playerMovement : MonoBehaviour
     {
         canMove = true;
         playerAnimation.StopShocked();
-    }
-    private void EnableShock()
-    {
-        canBeShocked = true;
     }
 }

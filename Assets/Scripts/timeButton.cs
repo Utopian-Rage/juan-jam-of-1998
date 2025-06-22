@@ -18,6 +18,15 @@ public class timeButton : MonoBehaviour
     {
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                Transform interactableChild = player.transform.Find("Interactable");
+                if (interactableChild != null)
+                {
+                    interactableChild.gameObject.SetActive(false);
+                }
+            }
             if (timer != null)
             {
                 timer.AddTime(timeToAdd);
@@ -33,6 +42,11 @@ public class timeButton : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInTrigger = true;
+            Transform interactableChild = collision.transform.Find("Interactable");
+            if (interactableChild != null)
+            {
+                interactableChild.gameObject.SetActive(true);
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -40,6 +54,11 @@ public class timeButton : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInTrigger = false;
+            Transform interactableChild = collision.transform.Find("Interactable");
+            if (interactableChild != null)
+            {
+                interactableChild.gameObject.SetActive(false);
+            }
         }
     }
 }
