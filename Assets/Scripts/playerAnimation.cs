@@ -15,9 +15,6 @@ public class playerAnimation : MonoBehaviour
     private bool isShocked = false;
     private bool isEndShocked = false;
     private bool isPaused = false;
- 
-
-  
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -108,8 +105,6 @@ public class playerAnimation : MonoBehaviour
             spriteRenderer.sprite = currentAnimation[currentFrame];
         }
     }
-
-    
     public void PlayShocked()
     {
         isShocked = true;
@@ -129,5 +124,19 @@ public class playerAnimation : MonoBehaviour
     public void ResumeAnimations()
     {
         isPaused = false;
+    }
+    public int GetCurrentFrame()
+    {
+        return currentFrame;
+    }
+
+    public bool IsPaused()
+    {
+        return isPaused;
+    }
+
+    public bool IsShocked()
+    {
+        return isShocked;
     }
 }

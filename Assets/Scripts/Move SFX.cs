@@ -1,32 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-
-
-
 public class MoveSFX : MonoBehaviour
 {
     public AudioSource Source;
     public AudioClip Clip;
     public AudioClip Clip2;
-    public double goaltime;
+    private bool playClip1Next = true;
 
-    // Update is called once per frame
-    private void time()
+    [SerializeField] playerAnimation playerAnim; // Assign in Inspector or via GetComponent
+
+    private int lastFrame = -1;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        if (playerAnim == null)
+            playerAnim = Object.FindFirstObjectByType<playerAnimation>();
+    }
+
+    private void Update()
+    {
+        if (playerAnim == null)
+            return;
+
+        // Only play SFX if moving (not paused or shocked)
+        if (IsMoving() && !IsPausedOrShocked())
         {
-            goaltime = AudioSettings.dspTime + 0.5;
-            Source.clip = Clip;
-            Source.PlayScheduled(goaltime);
+            int currentFrame = playerAnim.GetCurrentFrame();
+            if (currentFrame != lastFrame)
+            {
+                // Only play a new clip if the previous one has finished
+                if (!Source.isPlaying)
+                {
+                    Source.clip = playClip1Next ? Clip : Clip2;
+                    Source.Play();
+                    playClip1Next = !playClip1Next;
+                    lastFrame = currentFrame;
+                }
+            }
         }
-            
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        else
         {
-            goaltime = AudioSettings.dspTime + 0.5;
-            Source.clip = Clip2;
-            Source.PlayScheduled(goaltime);
+            lastFrame = -1; // Reset so SFX can play again when movement resumes
         }
+    }
+
+    private bool IsMoving()
+    {
+        return Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.01f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.01f;
+    }
+
+    private bool IsPausedOrShocked()
+    {
+        // Access isPaused and isShocked via public methods or properties
+        return playerAnim.IsPaused() || playerAnim.IsShocked();
     }
 }
