@@ -7,6 +7,7 @@ public class pylonBehaviour : MonoBehaviour
     private float timer = 0f;
     public AudioSource Source;
     public AudioClip Clip;
+    private bool hasPlayedClip = false;
     void Update()
     {
         timer += Time.deltaTime;
@@ -14,6 +15,7 @@ public class pylonBehaviour : MonoBehaviour
         {
             isPylonOn = !isPylonOn;
             timer = 0f;
+            hasPlayedClip = false;
         }
         if (LightObject != null)
         {
@@ -28,7 +30,11 @@ public class pylonBehaviour : MonoBehaviour
     {
         if (isPylonOn && collision.gameObject.CompareTag("Player"))
         {
-            Source.PlayOneShot(Clip);
+            if (!hasPlayedClip)
+            {
+                Source.PlayOneShot(Clip);
+                hasPlayedClip = true;
+            }
             collision.gameObject.GetComponent<playerMovement>()?.ShockPlayer();
         }
     }
