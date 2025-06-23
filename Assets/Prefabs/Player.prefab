@@ -99,7 +99,7 @@ MonoBehaviour:
   Source: {fileID: 3220391115486648084}
   Clip: {fileID: 8300000, guid: 91d8139b9b15e404296a45f7ba2acff8, type: 3}
   Clip2: {fileID: 8300000, guid: c36c2460fa403db49b9371a57c751ab4, type: 3}
-  goaltime: 0.5
+  playerAnim: {fileID: 0}
 --- !u!114 &5905700514002210894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,8 +284,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c36c2460fa403db49b9371a57c751ab4, type: 3}
-  m_Resource: {fileID: 8300000, guid: c36c2460fa403db49b9371a57c751ab4, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
