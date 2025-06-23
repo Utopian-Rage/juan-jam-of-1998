@@ -16,6 +16,7 @@ public class pylonAnimation : MonoBehaviour
     {
         bool isPylonOn = gameObject.GetComponentInChildren<pylonBehaviour>().getisPylonOn();
         currentAnimation = isPylonOn ? pylonOnSprites : pylonOffSprites;
+        // Select the appropriate animation based on the pylon state
         if (currentAnimation != null && currentAnimation.Length > 0)
         {
             frameTimer += Time.deltaTime;

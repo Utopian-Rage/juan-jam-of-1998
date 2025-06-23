@@ -16,8 +16,9 @@ public class switchesGame : MonoBehaviour
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (targetButton == null || targetButton.Length == 0 || canvasRect == null) return;
-        isOn = new bool[targetButton.Length];
-        int total = targetButton.Length;
+        // Initialize the game state
+        isOn = new bool[targetButton.Length]; // Create an array to track the state of each button
+        int total = targetButton.Length; // Get the total number of buttons
         int minOff = Mathf.CeilToInt(total / 2f);
         int offCount = 0;
         for (int i = 0; i < total; i++)
@@ -25,7 +26,7 @@ public class switchesGame : MonoBehaviour
             isOn[i] = false;
         }
         for (int i = 0; i < total; i++)
-        {
+        { // Randomly set the initial state of each button
             if (offCount < minOff)
             {
                 offCount++;
@@ -36,29 +37,29 @@ public class switchesGame : MonoBehaviour
             }
         }
         for (int i = 0; i < total; i++)
-        {
+        { // Shuffle the buttons to randomize their initial state
             int swapIdx = Random.Range(0, total);
             bool temp = isOn[i];
             isOn[i] = isOn[swapIdx];
             isOn[swapIdx] = temp;
         }
         for (int i = 0; i < total; i++)
-        {
-            UpdateButtonVisual(i);
+        { // Update the visual state of each button based on the initial state
+            UpdateButtonVisual(i); 
             int idx = i;
             targetButton[i].onClick.RemoveAllListeners();
             targetButton[i].onClick.AddListener(() => ToggleButton(idx));
         }
     }
     void ToggleButton(int idx)
-    {
+    { // Toggle the state of the button at the specified index
         Source.PlayOneShot(Clip);
         isOn[idx] = !isOn[idx];
         UpdateButtonVisual(idx);
         CheckWinCondition();
     }
     void UpdateButtonVisual(int idx)
-    {
+    { // Update the visual representation of the button based on its state
         Image buttonImage = targetButton[idx].GetComponent<Image>();
         if (buttonImage != null)
         {
@@ -71,7 +72,7 @@ public class switchesGame : MonoBehaviour
         }
     }
     void CheckWinCondition()
-    {
+    { // Check if all buttons are in the "on" state
         for (int i = 0; i < isOn.Length; i++)
         {
             if (!isOn[i])
@@ -80,12 +81,13 @@ public class switchesGame : MonoBehaviour
         StartCoroutine(DelayedMiniGameEnd());
     }
     private System.Collections.IEnumerator DelayedMiniGameEnd()
-    {
+    { // Delay the end of the mini game to allow for visual feedback
         foreach (var btn in targetButton)
         {
             if (btn != null) btn.interactable = false;
         }
         yield return new WaitForSeconds(1f);
+        // After the delay, set all buttons to interactable and end the mini game. This prevents the buttons being disabled when the mini game is restarted.
         foreach (var btn in targetButton)
         {
             if (btn != null) btn.interactable = true;

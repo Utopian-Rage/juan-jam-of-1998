@@ -1,5 +1,6 @@
 using UnityEngine;
-
+// This script provides universal UI functions for mini-games
+// It handles starting and ending mini-games, and interacts with the player movement script.
 public class universalUIFunctions : MonoBehaviour
 {
     GameObject player;
@@ -22,6 +23,7 @@ public class universalUIFunctions : MonoBehaviour
     }
     public void miniGameStart()
     {
+        // Start the mini-game by calling the MiniGameStart method on the playerMovement script
         if (player != null)
         {
             playerMovementScript.MiniGameStart();
@@ -29,10 +31,11 @@ public class universalUIFunctions : MonoBehaviour
     }
     public void miniGameEnd(GameObject miniGame)
     {
+        // End the mini-game by calling the MiniGameEnd method on the playerMovement script
         if (miniGame != null)
         {
             playerMovementScript.MiniGameEnd();
-            miniGame.SetActive(false);
+            miniGame.SetActive(false); // Deactivate the mini-game object
         }
     }
 }

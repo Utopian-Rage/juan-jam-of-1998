@@ -21,15 +21,15 @@ public class playerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (!canMove)
+        if (!canMove) // If the player cannot move, set movement to zero
         {
             movement = Vector2.zero;
         }
-        else if (canMove)
+        else if (canMove) // If the player can move, get input for movement
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            playerSpeedCheck();
+            playerSpeedCheck(); // Check if the player is running or walking
             movement = movement.normalized;
         }
     }
@@ -50,10 +50,12 @@ public class playerMovement : MonoBehaviour
     }
     private void EnableShock()
     {
+        // Re-enable the ability to be shocked after a shock event
         canBeShocked = true;
     }
     public void ShockPlayer()
     {
+        // This method is called when the player is shocked
         if (!canBeShocked) return;
         canMove = false;
         canBeShocked = false;
@@ -63,18 +65,23 @@ public class playerMovement : MonoBehaviour
     }
     public void MiniGameStart()
     {
+        // This method is called when a mini-game starts
+        // Disable player movement and animations during the mini-game
         canMove = false;
         canBeShocked = false;
         playerAnimation.PauseAnimations();
     }
     public void MiniGameEnd()
     {
+        // This method is called when a mini-game ends
+        // Re-enable player movement and animations after the mini-game
         canMove = true;
         canBeShocked = true;
         playerAnimation.ResumeAnimations();
     }
     private void EnableMovement()
     {
+        // Re-enable player movement after a shock event
         canMove = true;
         playerAnimation.StopShocked();
     }

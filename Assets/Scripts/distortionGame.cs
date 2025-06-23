@@ -16,9 +16,8 @@ public class distortionGame : MonoBehaviour
     {
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameStart();
         if (scrollbars == null || scrollbars.Length == 0) return;
-
-        valueGoals = new float[scrollbars.Length];
-
+        valueGoals = new float[scrollbars.Length]; // Initialize the goals array
+        // Initialize each scrollbar with a random value and goal
         for (int i = 0; i < scrollbars.Length; i++)
         {
             valueGoals[i] = Random.Range(0f, 1f);
@@ -39,11 +38,11 @@ public class distortionGame : MonoBehaviour
                 }
             }
         }
+        // Set the goal bar to the first goal value if it exists
         if (GoalBar != null && scrollbars.Length > 0)
         {
             GoalBar.value = valueGoals[0];
         }
-
         UpdateProgressBar();
     }
     void CheckWinCondition()
@@ -76,6 +75,7 @@ public class distortionGame : MonoBehaviour
     }
     void UpdateProgressBar()
     {
+        // Update the progress bar based on how close each scrollbar is to its goal
         if (progressBar == null) return;
         float totalDistance = 0f;
         for (int i = 0; i < scrollbars.Length; i++)
@@ -83,10 +83,10 @@ public class distortionGame : MonoBehaviour
             totalDistance += Mathf.Abs(scrollbars[i].value - valueGoals[i]);
         }
         float normalized = 1f - Mathf.Clamp01(totalDistance / scrollbars.Length);
-        progressBar.value = normalized;
+        progressBar.value = normalized; // Set the progress bar value based on the average distance to the goals
     }
     private System.Collections.IEnumerator DelayedMiniGameEnd()
-    {
+    {// Disable all scrollbars and change their handle sprites
         if (scrollbars != null)
         {
             foreach (var sb in scrollbars)
@@ -103,17 +103,18 @@ public class distortionGame : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1f);
+        // Re-enable all scrollbars and reset their handle sprites
             foreach (var sb in scrollbars)
             {
-                if (sb != null) sb.interactable = true;
-                    if (sb.handleRect != null)
+            if (sb != null) sb.interactable = true;
+                if (sb.handleRect != null)
+                {
+                    Image handleImage = sb.handleRect.GetComponent<Image>();
+                    if (handleImage != null)
                     {
-                        Image handleImage = sb.handleRect.GetComponent<Image>();
-                        if (handleImage != null)
-                        {
-                            handleImage.sprite = NormalHandleSprite;
-                        }
+                        handleImage.sprite = NormalHandleSprite;
                     }
+                }
             }
         canvasRect.gameObject.GetComponent<universalUIFunctions>().miniGameEnd(miniGame);
     }

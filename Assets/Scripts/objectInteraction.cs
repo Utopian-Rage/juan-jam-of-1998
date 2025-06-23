@@ -15,20 +15,22 @@ public class objectInteraction : MonoBehaviour
                 Transform interactableChild = player.transform.Find("Interactable");
                 if (interactableChild != null)
                 {
+                    // Disable the interactable sprite when the player interacts
                     interactableChild.gameObject.SetActive(false);
                 }
             }
             if (miniGame != null)
-                miniGame.SetActive(true);
-            isPlayerInTrigger = false;
-            isTimerDone = false;
-            StartCoroutine(StartInteractionTimer());
+                miniGame.SetActive(true); // Activate the mini game
+            isPlayerInTrigger = false; // Reset the trigger state
+            isTimerDone = false; // Set the timer to not done
+            StartCoroutine(StartInteractionTimer()); // Start the interaction timer (I'm planning to find a way to start this when the mini game is closed - LK)
         }
     }
     private System.Collections.IEnumerator StartInteractionTimer()
     {
         Debug.Log("Interaction started, waiting for " + timerDuration + " seconds.");
-        yield return new WaitForSeconds(timerDuration);
+        yield return new WaitForSeconds(timerDuration); // Wait for the specified duration
+        // After the wait, set the timer as done
         isTimerDone = true;
         Debug.Log("Interaction timer done.");
     }
@@ -40,6 +42,7 @@ public class objectInteraction : MonoBehaviour
             Transform interactableChild = collision.transform.Find("Interactable");
             if (interactableChild != null)
             {
+                // Enable the interactable sprite when the player enters the trigger
                 interactableChild.gameObject.SetActive(true);
             }
         }
@@ -52,6 +55,7 @@ public class objectInteraction : MonoBehaviour
             Transform interactableChild = collision.transform.Find("Interactable");
             if (interactableChild != null)
             {
+                // Disable the interactable sprite when the player exits the trigger
                 interactableChild.gameObject.SetActive(false);
             }
         }

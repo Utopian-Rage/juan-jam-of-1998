@@ -13,6 +13,7 @@ public class pylonBehaviour : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= interval)
         {
+            // Toggle the pylon state and reset the timer
             isPylonOn = !isPylonOn;
             timer = 0f;
             hasPlayedClip = false;
@@ -28,13 +29,15 @@ public class pylonBehaviour : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D collision)
     {
+        // Check if the pylon is on and the collider belongs to the player
         if (isPylonOn && collision.gameObject.CompareTag("Player"))
         {
-            if (!hasPlayedClip)
+            if (!hasPlayedClip) // Check if the clip has already been played
             {
                 Source.PlayOneShot(Clip);
                 hasPlayedClip = true;
             }
+            // Apply shock effect to the player
             collision.gameObject.GetComponent<playerMovement>()?.ShockPlayer();
         }
     }

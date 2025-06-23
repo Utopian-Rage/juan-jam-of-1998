@@ -20,7 +20,8 @@ public class timeButton : MonoBehaviour
     void Update()
     {
         if (isPlayerInTrigger && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit")))
-        {
+        { // Check if the player is in the trigger and presses the interact key
+        // Play the audio clips (maybe just one if you prefer? - LK)
             Source.PlayOneShot(Clip);
             Source.PlayOneShot(Clip2);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -33,7 +34,7 @@ public class timeButton : MonoBehaviour
                 }
             }
             if (timer != null)
-            {
+            { // If the level timer is found, add time
                 timer.AddTime(timeToAdd);
             }
             else
@@ -50,7 +51,7 @@ public class timeButton : MonoBehaviour
             isPlayerInTrigger = true;
             Transform interactableChild = collision.transform.Find("Interactable");
             if (interactableChild != null)
-            {
+            { // If the player is in the trigger, enable the interactable notification
                 interactableChild.gameObject.SetActive(true);
             }
         }
@@ -62,7 +63,7 @@ public class timeButton : MonoBehaviour
             isPlayerInTrigger = false;
             Transform interactableChild = collision.transform.Find("Interactable");
             if (interactableChild != null)
-            {
+            { // If the player exits the trigger, disable the interactable notification
                 interactableChild.gameObject.SetActive(false);
             }
         }

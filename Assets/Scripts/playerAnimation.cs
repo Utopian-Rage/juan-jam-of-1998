@@ -7,7 +7,10 @@ public class playerAnimation : MonoBehaviour
     [SerializeField] Sprite[] sideSprite;
     [SerializeField] Sprite[] shockedSprite;
     [SerializeField] Sprite[] endShockedSprite;
+    // The backSprite, frontSprite, sideSprite, ShockedSprite, and endShockedSprite arrays should contain the sprites for the respective animations
     [SerializeField] float animationFrameRate;
+    // The animationFrameRate is the number of frames per second for the animation
+    // For example, if you want 10 frames per second, set this to 10
     private SpriteRenderer spriteRenderer;
     private float frameTimer;
     private int currentFrame;
@@ -22,7 +25,7 @@ public class playerAnimation : MonoBehaviour
     }
     void Update()
     {
-        if (isPaused)
+        if (isPaused) // If the animations are paused, set the sprite to the first animation frame of it's last state
         {
             if (isShocked && shockedSprite != null && shockedSprite.Length > 0)
             {
@@ -38,7 +41,7 @@ public class playerAnimation : MonoBehaviour
             }
             return;
         }
-        if (isShocked)
+        if (isShocked) // If the player is shocked, play the shocked animation
         {
             if (shockedSprite != null && shockedSprite.Length > 0)
             {
@@ -52,7 +55,7 @@ public class playerAnimation : MonoBehaviour
             }
             return;
         }
-        if (isEndShocked)
+        if (isEndShocked) // If the player is in the end shocked state, play the end shocked animation
         {
             if (endShockedSprite != null && endShockedSprite.Length > 0)
             {
@@ -66,6 +69,7 @@ public class playerAnimation : MonoBehaviour
             }
             return;
         }
+        // If the player is not shocked, play the normal movement animations
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         if (horizontal < 0)
@@ -91,9 +95,8 @@ public class playerAnimation : MonoBehaviour
         if (currentAnimation != null && currentAnimation.Length > 0)
         {
             frameTimer += Time.deltaTime;
-            if (frameTimer >= 1f / animationFrameRate)
+            if (frameTimer >= 1f / animationFrameRate) // Check if it's time to switch to the next frame
             {
-
                 frameTimer = 0f;
                 currentFrame = (currentFrame + 1) % currentAnimation.Length;
                 spriteRenderer.sprite = currentAnimation[currentFrame];
@@ -101,6 +104,7 @@ public class playerAnimation : MonoBehaviour
         }
         if (horizontal == 0 && vertical == 0)
         {
+            // If the player is not moving, reset to the first frame of the current animation
             currentFrame = 0;
             spriteRenderer.sprite = currentAnimation[currentFrame];
         }
