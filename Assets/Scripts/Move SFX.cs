@@ -1,28 +1,29 @@
 using UnityEngine;
 public class MoveSFX : MonoBehaviour
 {
-    public AudioSource Source;
-    public AudioClip Clip;
-    public AudioClip Clip2;
+    [SerializeField] AudioSource Source;
+    [SerializeField] AudioClip Clip;
+    [SerializeField] AudioClip Clip2;
     private bool playClip1Next = true;
+    private bool hasMoved = false;
 
     [SerializeField] playerAnimation playerAnim; // Assign in Inspector or via GetComponent
 
     private int lastFrame = -1;
-
-    private void Start()
-    {
-        if (playerAnim == null)
-            playerAnim = Object.FindFirstObjectByType<playerAnimation>();
-    }
 
     private void Update()
     {
         if (playerAnim == null)
             return;
 
-        // Only play SFX if moving (not paused or shocked)
-        if (IsMoving() && !IsPausedOrShocked())
+        // Detect first movement
+        if (!hasMoved && IsMoving())
+        {
+            hasMoved = true;
+        }
+
+        // Only play SFX if moving (not paused or shocked) and player has moved at least once
+        if (hasMoved && IsMoving() && !IsPausedOrShocked())
         {
             int currentFrame = playerAnim.GetCurrentFrame();
             if (currentFrame != lastFrame)
