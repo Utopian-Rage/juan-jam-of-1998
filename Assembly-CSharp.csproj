@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\levelTimer.cs" />
     <Compile Include="Assets\Scripts\Main Menu.cs" />
     <Compile Include="Assets\Scripts\universalUIFunctions.cs" />
+    <Compile Include="Assets\Scripts\musicplayer.cs" />
     <Compile Include="Assets\Scripts\pylonBehaviour.cs" />
     <Compile Include="Assets\Scripts\switchesGame.cs" />
     <Compile Include="Assets\Scripts\delayGame.cs" />
