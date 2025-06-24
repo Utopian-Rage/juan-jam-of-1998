@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\pylonAnimation.cs" />
     <Compile Include="Assets\Scripts\distortionGame.cs" />
     <Compile Include="Assets\Scripts\Move SFX.cs" />
+    <Compile Include="Assets\Scripts\escape.cs" />
     <Compile Include="Assets\Scripts\timeButton.cs" />
   </ItemGroup>
   <ItemGroup>

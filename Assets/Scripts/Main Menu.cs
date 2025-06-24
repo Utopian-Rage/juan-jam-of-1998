@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         // Load the first level when the Play button is clicked
         AudioSource.Stop();
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
